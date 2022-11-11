@@ -26,7 +26,7 @@ public class MainController {
     @GetMapping("/main")
     public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
         Iterable<Message> messages = messageRepo.findAll();
-        /*Если значения фильтра пустое вывести все сообщения иначе отсортировать по тегу*/
+        /*Если значения фильтра не пустое, то отсортировать по тегу, иначе вывести все сообщения*/
         if (filter != null && !filter.isEmpty()){
             messages = messageRepo.findByTag(filter);
         }else {
