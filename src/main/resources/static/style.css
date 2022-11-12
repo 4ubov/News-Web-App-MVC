@@ -2,8 +2,7 @@ body{
     color: #104579;
 }
 img {
-    border: 1px solid #813276;
-    border-radius: 4px;
-    padding: 5px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
 }
