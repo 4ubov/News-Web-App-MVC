@@ -1,4 +1,6 @@
+<#include "security.ftlh">
 <#macro login path isRegisterForm>
+    <#if !isAuth>
     <form action="${path}" method="post">
         <div class="row mb-3">
             <label class="col-sm-2 col-form-label"> User Name : </label>
@@ -28,6 +30,9 @@
         </#if>
         <button type="submit" class="btn btn-primary"><#if isRegisterForm>Sing Up<#else> Sign In</#if></button>
     </form>
+    <#else >
+        <div>You're already logged in.</div>
+    </#if>
 </#macro>
 
 <#macro logout>
