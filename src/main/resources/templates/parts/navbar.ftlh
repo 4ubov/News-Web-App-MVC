@@ -20,6 +20,11 @@
                         <a class="nav-link" href="/user">UserList</a>
                     </li>
                 </#if>
+                <#if isAuth>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/profile">Profile</a>
+                    </li>
+                </#if>
             </ul>
             <#if isAuth>
                 <div class="navbar-text me-3">${name}</div>

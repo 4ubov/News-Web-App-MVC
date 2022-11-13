@@ -53,7 +53,7 @@
             </div>
         </div>
     <#else>
-        No message
+        <div>No message</div>
     </#list>
     </div>
 </@c.page>
