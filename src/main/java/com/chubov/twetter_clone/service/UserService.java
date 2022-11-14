@@ -3,11 +3,11 @@ package com.chubov.twetter_clone.service;
 import com.chubov.twetter_clone.domain.Role;
 import com.chubov.twetter_clone.domain.User;
 import com.chubov.twetter_clone.repos.UserRepo;
-import freemarker.template.utility.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -21,6 +21,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private MailSender mailSender;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -37,6 +40,7 @@ public class UserService implements UserDetailsService {
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         user.setActivationCode(UUID.randomUUID().toString());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.save(user);
 
         sendMessage(user);
@@ -97,8 +101,8 @@ public class UserService implements UserDetailsService {
                 user.setActivationCode(UUID.randomUUID().toString());
             }
         }
-        if (StringUtils.isEmpty(newPassword)) {
-            user.setPassword(newPassword);
+        if (!StringUtils.isEmpty(newPassword)) {
+            user.setPassword(passwordEncoder.encode(newPassword));
         }
 
         userRepo.save(user);
