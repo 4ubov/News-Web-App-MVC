@@ -6,3 +6,6 @@ img {
     width: 100px;
     object-fit: contain;
 }
+th, td {
+    padding: 15px;
+}
