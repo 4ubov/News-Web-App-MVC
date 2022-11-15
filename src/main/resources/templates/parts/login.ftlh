@@ -1,35 +1,71 @@
 <#include "security.ftlh">
 <#macro login path isRegisterForm>
     <#if !isAuth>
-    <form action="${path}" method="post">
-        <div class="row mb-3">
-            <label class="col-sm-2 col-form-label"> User Name : </label>
-            <div class="col-sm-3">
-                <input type="text" name="username" class="form-control" placeholder="User name"/>
-            </div>
-        </div>
-        <#if isRegisterForm>
+        <form action="${path}" method="post">
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label"> Email: </label>
+                <label class="col-sm-2 col-form-label"> User Name : </label>
                 <div class="col-sm-3">
-                    <input type="email" name="email" class="form-control" placeholder="Example@some.com"/>
+                    <input type="text" name="username" value="<#if user??>${user.username}</#if>"
+                           class="form-control ${(usernameError??)?string('is-invalid', '')}"
+                           placeholder="User name"/>
+                    <#if usernameError??>
+                        <div class="invalid-feedback">
+                            ${usernameError}
+                        </div>
+                    </#if>
                 </div>
             </div>
-        </#if>
-        <div class="row mb-3">
-            <label class="col-sm-2 col-form-label"> Password: </label>
-            <div class="col-sm-3">
-                <input type="password" name="password" class="form-control" placeholder="Password"/>
+            <#if isRegisterForm>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label"> Email: </label>
+                    <div class="col-sm-3">
+                        <input type="email" name="email" class="form-control ${(emailError??)?string('is-invalid', '')}"
+                               value="<#if user??>${user.email}</#if>" placeholder="Example@some.com"/>
+                        <#if emailError??>
+                            <div class="invalid-feedback">
+                                ${emailError}
+                            </div>
+                        </#if>
+                    </div>
+                </div>
+            </#if>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label"> Password: </label>
+                <div class="col-sm-3">
+                    <input type="password" name="password"
+                           class="form-control ${(passwordError??)?string('is-invalid', '')}"
+                           placeholder="Password"/>
+                    <#if passwordError??>
+                        <div class="invalid-feedback">
+                            ${passwordError}
+                        </div>
+                    </#if>
+                </div>
             </div>
-        </div>
-        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <#if !isRegisterForm>
-            <div>
-                <a href="/registration">Register</a>
-            </div>
-        </#if>
-        <button type="submit" class="btn btn-primary"><#if isRegisterForm>Sing Up<#else> Sign In</#if></button>
-    </form>
+            <#if isRegisterForm>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label"> Password confirmation: </label>
+                    <div class="col-sm-3">
+                        <input type="password" name="password_confirmation"
+                               class="form-control ${(password_confirmationError??)?string('is-invalid', '')}"
+                               placeholder="Password Confirmation"/>
+                        <#if password_confirmationError??>
+                            <div class="invalid-feedback">
+                                ${password_confirmationError}
+                            </div>
+                        </#if>
+                    </div>
+                </div>
+            </#if>
+
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <#if !isRegisterForm>
+                <div>
+                    <a href="/registration">Register</a>
+                </div>
+            </#if>
+            <button type="submit" class="btn btn-primary"><#if isRegisterForm>Sing Up<#else> Sign In</#if></button>
+        </form>
     <#else >
         <div>You're already logged in.</div>
     </#if>

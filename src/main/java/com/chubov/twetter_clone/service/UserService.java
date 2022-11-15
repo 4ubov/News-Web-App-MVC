@@ -4,6 +4,7 @@ import com.chubov.twetter_clone.domain.Role;
 import com.chubov.twetter_clone.domain.User;
 import com.chubov.twetter_clone.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,8 +27,13 @@ public class UserService implements UserDetailsService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepo.findByUsername(username);
+    public UserDetails loadUserByUsername(String username) throws BadCredentialsException {
+        User user = userRepo.findByUsername(username);
+
+        if (user==null){
+            throw new BadCredentialsException("User not found");
+        }
+        return user;
     }
 
     public boolean addUser(User user) {
