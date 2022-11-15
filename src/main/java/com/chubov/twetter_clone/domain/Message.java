@@ -1,18 +1,16 @@
 package com.chubov.twetter_clone.domain;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-
-import com.chubov.twetter_clone.domain.User;
-import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Message {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @NotBlank(message = "Please fill the message")
     @Length(max = 2048, message = "Message too long (more than 2Kb)")
     private String text;
@@ -43,13 +41,15 @@ public class Message {
         this.filename = filename;
     }
 
-    public String getAuthorName(){
-        return author != null ? author.getUsername():"<none>";
+    public String getAuthorName() {
+        return author != null ? author.getUsername() : "<none>";
     }
-    public User getAuthor(){
+
+    public User getAuthor() {
         return author;
     }
-    public void setAuthor(User author){
+
+    public void setAuthor(User author) {
         this.author = author;
     }
 

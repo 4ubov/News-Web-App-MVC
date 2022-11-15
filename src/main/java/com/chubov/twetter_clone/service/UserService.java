@@ -29,12 +29,17 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws BadCredentialsException {
         User user = userRepo.findByUsername(username);
-
-        if (user==null){
+        //Invalid username
+        if (user==null) {
             throw new BadCredentialsException("User not found");
+        }
+        //Invalid password or something else
+        else if (user!=null) {
+            throw new BadCredentialsException("Invalid username or password");
         }
         return user;
     }
+
 
     public boolean addUser(User user) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
