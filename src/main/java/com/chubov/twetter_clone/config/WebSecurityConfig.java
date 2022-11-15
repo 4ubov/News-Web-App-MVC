@@ -37,6 +37,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login")
                     .permitAll()
                 .and()
+                .rememberMe() //Сохранение сессии. Храниться будет в БД
+                .and()
                     .logout()
                     .permitAll();
     }

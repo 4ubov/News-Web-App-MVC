@@ -31,13 +31,16 @@
         </dependency>
 
         <!--Security-->
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+        <!--Save session in DataBase-->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-jdbc</artifactId>
         </dependency>
 
         <dependency>
@@ -82,6 +85,9 @@
             <artifactId>javax.el</artifactId>
             <version>3.0.0</version>
         </dependency>
+
+
+
     </dependencies>
     <build>
         <plugins>

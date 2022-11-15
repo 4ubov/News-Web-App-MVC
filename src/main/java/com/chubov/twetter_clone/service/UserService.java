@@ -33,10 +33,7 @@ public class UserService implements UserDetailsService {
         if (user==null) {
             throw new BadCredentialsException("User not found");
         }
-        //Invalid password or something else
-        else if (user!=null) {
-            throw new BadCredentialsException("Invalid username or password");
-        }
+
         return user;
     }
 
