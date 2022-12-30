@@ -22,10 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @Bean
-    public BCryptPasswordEncoder getPasswordEncoder(){
-        return new BCryptPasswordEncoder(BCryptPasswordEncoder.BCryptVersion.$2A,8);
-    };
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
