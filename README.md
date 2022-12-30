@@ -40,17 +40,13 @@ Preview:
 ![image](https://user-images.githubusercontent.com/46792640/210053853-ec319531-a6e8-4ef0-a45d-1c6c89ee6c12.png)
 
 5. Profile page
-![image](https://user-images.githubusercontent.com/46792640/210053900-2a2d77ff-0406-407b-8802-f7f7faa5a878.png)
+![210053900-2a2d77ff-0406-407b-8802-f7f7faa5a878](https://user-images.githubusercontent.com/46792640/210073903-4ad0f7b7-f6cc-45c6-9223-4c73b54a5558.png)
 
 6. Admin user view
 ![image](https://user-images.githubusercontent.com/46792640/210054028-2f6f1b2f-bda5-4b92-a29f-1512d2630931.png)
 
 6.1 Admin panel (User List)
-![image](https://user-images.githubusercontent.com/46792640/210054233-89fd8b85-0ad8-48e3-9118-dad3bb28fb75.png)
+![Безымянный](https://user-images.githubusercontent.com/46792640/210073888-cc29f2ce-b356-4c71-ae1b-b4fba6648779.png)
 
 6.2 Edit user function
 ![image](https://user-images.githubusercontent.com/46792640/210054289-3a21fa3f-3820-40e4-acc5-1ddff03bc110.png)
-
-
-
-
