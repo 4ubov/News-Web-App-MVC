@@ -1,4 +1,4 @@
-# Twitter_copy_MVC
+# MVC News-Web-App
 Pet project. Twitter Copy. 
 Stack: Java 11 + Spring Boot + Maven + Hibernate + MySQL + FreeMarker + Bootstrap5 + FlyWay.
 
